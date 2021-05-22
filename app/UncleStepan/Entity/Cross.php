@@ -32,7 +32,10 @@
                     array_values($this->transportSet)
                 );
 
-                $crossSnap[] = new $transport;
+                $crossSnap[] = [
+                    'from' => $direction,
+                    'transport' => new $transport
+                ];
             }
 
             return $crossSnap;
