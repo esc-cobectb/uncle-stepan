@@ -38,6 +38,9 @@
     $cross->setChanceDirection($crossDirections);
     $cross->setTransportSet($transportClasses);
 
+    $router->get('/', function(){
+        return view('crossway');
+    });
     $router->get('/snap', function () use ($cross) {
         return response()->json(
             $cross->snap()
