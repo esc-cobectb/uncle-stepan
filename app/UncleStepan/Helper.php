@@ -27,6 +27,7 @@
                     }
                 }
             } else {
+                shuffle($set);
                 return $set[array_rand($set)];
             }
 

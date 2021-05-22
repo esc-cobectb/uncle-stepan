@@ -9,13 +9,12 @@
     class Cross
     {
         const RAND_RANGE = 10000;
-        const MAX_COUNT_NEW_TRANSPORT_IN_SNAP = 8;
+        const MAX_COUNT_NEW_TRANSPORT_IN_SNAP = 3;
         public $chanceDirection;
         public $transportSet;
 
         public function __construct()
         {
-
         }
 
         public function snap()
@@ -23,12 +22,15 @@
             $countTransport = rand(0, self::MAX_COUNT_NEW_TRANSPORT_IN_SNAP);
             $crossSnap = [];
 
-            for ($i = 0; $i < self::MAX_COUNT_NEW_TRANSPORT_IN_SNAP; $i++) {
+            for ($i = 0; $i < $countTransport; $i++) {
                 $direction = Helper::choiseFromSet(
                     array_keys($this->chanceDirection),
                     array_values($this->chanceDirection)
                 );
-                $transport = Helper::choiseFromSet($this->transportSet);
+                $transport = Helper::choiseFromSet(
+                    array_keys($this->transportSet),
+                    array_values($this->transportSet)
+                );
 
                 $crossSnap[] = new $transport;
             }
